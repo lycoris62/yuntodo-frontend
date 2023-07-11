@@ -6,7 +6,7 @@ import TodolistPage from "./pages/TodolistPage.jsx";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/yuntodo-frontend">
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUpPage />} />
