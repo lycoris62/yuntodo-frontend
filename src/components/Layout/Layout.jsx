@@ -1,11 +1,14 @@
+import { Container } from "@mui/material";
 import Header from "./Header/Header";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
-      <main>{children}</main>
-    </div>
+      <Container fixed>
+        <main>{children}</main>
+      </Container>
+    </>
   );
 };
 
