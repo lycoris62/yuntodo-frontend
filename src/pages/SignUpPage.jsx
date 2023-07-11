@@ -10,6 +10,7 @@ import axios from "axios";
 const SignUpPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("url : ", `${import.meta.env.VITE_BACKEND_URL}/api/signup`);
     const data = new FormData(event.currentTarget);
     const signupData = {
       username: data.get("username"),
