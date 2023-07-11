@@ -4,15 +4,17 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const CustomAppBar = () => {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
           <Typography
-            href="/"
+            onClick={() => navigate("/")}
             variant="h6"
             component="a"
             sx={{
@@ -25,10 +27,10 @@ const CustomAppBar = () => {
           >
             YunTodo
           </Typography>
-          <Button color="inherit" href="/login">
+          <Button color="inherit" onClick={() => navigate("/login")}>
             Login
           </Button>
-          <Button color="inherit" href="/signup">
+          <Button color="inherit" onClick={() => navigate("/signup")}>
             Sign up
           </Button>
         </Toolbar>
