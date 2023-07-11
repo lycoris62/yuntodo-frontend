@@ -11,11 +11,26 @@ const CustomAppBar = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            href="/"
+            variant="h6"
+            component="a"
+            sx={{
+              mr: 2,
+              fontWeight: 700,
+              color: "inherit",
+              textDecoration: "none",
+              flexGrow: 1,
+            }}
+          >
             YunTodo
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Signup</Button>
+          <Button color="inherit" href="/login">
+            Login
+          </Button>
+          <Button color="inherit" href="/signup">
+            Sign up
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
