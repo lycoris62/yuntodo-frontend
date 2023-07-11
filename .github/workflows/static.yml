@@ -36,18 +36,22 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - name: Install dependencies
-        run: npm install
-        
-#       - name: Build
-#         run: npm run build
-#         env:
-#           VITE_API_KEY: ${{ secrets.VITE_BACKEND_URL }}
           
-      - name: Build 
-        run: vite build
+#       - name: Install dependencies
+#         run: npm install
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+        
+      - name: Build
+        run: npm run build
         env:
           VITE_API_KEY: ${{ secrets.VITE_BACKEND_URL }}
+          
+#       - name: Build 
+#         run: vite build
+#         env:
+#           VITE_API_KEY: ${{ secrets.VITE_BACKEND_URL }}
           
       - name: Setup Pages
         uses: actions/configure-pages@v3
