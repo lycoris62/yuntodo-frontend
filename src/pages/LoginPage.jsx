@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -6,15 +7,34 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 export default function LoginPage() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const { mutate, isLoading, isError, error, isSuccess } = useMutation(
+    async (userinfo) => {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+        userinfo,
+        { "Content-Type": "application/json" }
+      );
+      console.log("return data: ", data);
+      return data;
+    }
+  );
+
+  const onClick = (event) => {
     event.preventDefault();
+    console.log("url : ", `${import.meta.env.VITE_BACKEND_URL}/api/login`);
     const data = new FormData(event.currentTarget);
-    console.log({
+    const loginData = {
       username: data.get("username"),
       password: data.get("password"),
-    });
+    };
+    mutate(loginData);
   };
 
   return (
@@ -31,7 +51,7 @@ export default function LoginPage() {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate onSubmit={onClick} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -65,7 +85,7 @@ export default function LoginPage() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link onClick={() => navigate("/signup")} variant="body2">
                 {"Sign up"}
               </Link>
             </Grid>
