@@ -5,16 +5,23 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Grid, Link } from "@mui/material";
+import axios from "axios";
 
 const SignUpPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const signupData = {
       username: data.get("username"),
       password: data.get("password"),
       confirmPassword: data.get("confirmPassword"),
-    });
+    };
+
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/signup`, signupData)
+      .then((res) => {
+        console.log(res);
+      });
   };
   return (
     <Container component="main" maxWidth="xs">
