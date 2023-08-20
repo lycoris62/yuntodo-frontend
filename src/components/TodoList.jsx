@@ -1,12 +1,4 @@
-import {
-  Card,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Checkbox,
-  IconButton,
-} from "@mui/material";
+import { Card, List, ListItem, ListItemIcon, ListItemText, Checkbox, IconButton } from "@mui/material";
 import { Clear, Create } from "@mui/icons-material";
 
 const TodoList = () => {

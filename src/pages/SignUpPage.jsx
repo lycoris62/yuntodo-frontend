@@ -16,18 +16,18 @@ const SignUpPage = () => {
   const { mutate, isLoading, isError, error, isSuccess } = useMutation(
     async (userinfo) => {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/signup`,
+        `${import.meta.env.VITE_LOCAL_URL}/api/signup`,
         userinfo,
         { "Content-Type": "application/json" }
       );
       console.log("return data: ", data);
-      return data;
+      navigate("/login");
     }
   );
 
   const onClick = (event) => {
     event.preventDefault();
-    console.log("url : ", `${import.meta.env.VITE_BACKEND_URL}/api/signup`);
+    console.log("url : ", `${import.meta.env.VITE_LOCAL_URL}/api/signup`);
     const data = new FormData(event.currentTarget);
     const signupData = {
       username: data.get("username"),
